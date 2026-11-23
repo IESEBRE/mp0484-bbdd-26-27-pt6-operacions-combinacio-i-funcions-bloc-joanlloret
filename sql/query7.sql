@@ -1,1 +1,1 @@
-SELECT DISTINCT EMPLOYEE_ID FROM JOB_HISTORY WHERE ADD_MONTHS(START_DATE, 12) < END_DATE;
+SELECT DISTINCT employee_id FROM job_history WHERE MONTHS_BETWEEN(end_date, start_date) > 12 UNION ALL (SELECT employee_id FROM employees WHERE MONTHS_BETWEEN(SYSDATE, hire_date) > 12 MINUS SELECT employee_id FROM job_history WHERE MONTHS_BETWEEN(end_date, start_date) > 12);
